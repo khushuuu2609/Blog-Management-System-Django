@@ -1,0 +1,103 @@
+{% extends 'userApp/base.html' %}
+{% load hitcount_tags %}
+
+{% block content %}
+
+<div class="container text-center">    
+  <div class="row">
+    <div class="col-sm-3 well">
+      <div class="well">
+        <p><a href="{% url 'update' %}">{{ user.first_name }}</a></p>
+        <img src="../media/{{ user.profile.avatar }} " class="img-circle" height="65" width="65" alt="{{ user.first_name }}">
+      </div>
+      
+      <p>{{ user.profile.mobileno }}</p>
+      <p>{{ user.profile.location }}</a></p>
+      <p>{{ user.profile.bio }}</p>
+    </div>
+    <div class="col-sm-7">
+    
+      
+      {% for post in post  %}
+      <div class="row" id ="blogdetail{{post.id}}">
+        <div class="col-sm-3">
+          <div class="well">
+           <p>{{ post.author.first_name }} </p>
+           <p>{{ post.post_date}}</p>
+           
+           <img src="../media/{{ post.author.profile.avatar }}" class="img-circle" height="55" width="55" alt="Avatar">
+          </div>
+        </div>
+        <div class="col-sm-9">
+          <div class="well text-left">
+            <p>{{ post.title}}</p>
+     
+
+          <span><b>Total Like:{{ post.like.count   }}</b></span></p>
+          {% if post.status == False %}
+          <span><b>Status : Pending....</b></span>
+          {% else %}
+          <span><b>Status : Approved</b></span>
+          {% endif %}
+
+        </p>
+          <p>    <i class="fas fa-eye"></i>
+            <b>Views: {% get_hit_count for post %} </b></p>
+
+        <a class="btn btn-success" href="{% url 'update_blog' post.id  %}" >Edit</a>
+        <a href="#" class="delete btn btn-success" id=deletebtn{{post.id}} data={{post.id}}> Delete</a>
+
+          </div>
+        </div>
+      </div>
+    {% endfor %} 
+
+    </div>
+    
+  </div>
+</div>
+{% endblock %}
+{% block javascript %}
+
+<script>
+$(document).ready(function(){
+  
+  $('.delete').click(function(){
+    id = $(this).attr('data')
+
+                swal({
+                          title: "Are you sure?",
+                          text: "Once deleted, you will not be able to recover this Blog!",
+                          icon: "warning",
+                          buttons: true,
+                          dangerMode: true,
+                        })
+                      .then((willDelete) => {
+                          if (willDelete) {
+                            swal("Poof! Your Blog file has been deleted!", {
+                              icon: "success",
+                              
+                            });
+            
+                          $.ajax({
+                              type:'GET',
+                              url : '{% url "ajax_deleteblog" %}',
+                              data:{
+                                  'post_id': id,
+                              },
+                              success:function(data){
+                                $('#blogdetail'+id).remove();
+
+                              }
+                          })
+
+                          } else {
+                            swal("Your Blog  is safe!");
+                          }
+                        });
+
+           
+        })
+})
+</script>
+{% endblock %}

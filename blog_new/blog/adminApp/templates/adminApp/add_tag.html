@@ -1,0 +1,43 @@
+{% extends 'adminApp/base.html' %}
+{% block headcontent %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+{% endblock %}
+
+{% block content %}
+
+<div class="container text-center" id = "userdetail{{ user.id }}">    
+    <div class="row">
+      
+      <div class="col-sm-7">
+  
+        <div class="row">
+<div class="col-sm-3" >
+    <div class="well">
+     <p>{{ user.username }}</p>
+     <img src  = "../media/{{ user.profile.avatar}}" class="img-circle" height="55" width="55" >
+    </div>
+  </div>
+  <div class="col-sm-9">
+    <div class="well">
+        <form method="POST">
+            {% csrf_token %}
+          {{ tagform.as_p}}
+          <input type="submit" name="submit" value="Submit" /> 
+        </form>  
+        <table>
+            <tr>
+                <td>Tag Name</td>
+            </tr>
+            {% for tag in tag_details %}
+            <tr>
+                <td>{{ tag.tag_name }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

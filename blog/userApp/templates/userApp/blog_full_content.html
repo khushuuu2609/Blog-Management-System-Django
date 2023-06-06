@@ -1,0 +1,123 @@
+{% extends 'userApp/base.html' %}
+{% load i18n %}
+{% load social_share %}
+{% load hitcount_tags %}
+
+{% block content %}
+{% load static %}
+<div class="container text-center" >    
+  <div class="row">
+
+    <div id ="main_content" >
+      {% for post in posts  %}
+      <div class="row"    >
+        <div class="col-sm-3">
+          <div class="well">
+           <p>{{ post.author.first_name }} </p>
+           <p>{{ post.post_date}}</p>
+
+           <img src="../media/{{ post.author.profile.avatar }}" class="img-circle" height="55" width="55" alt="Avatar">
+          </div>
+        </div>
+        <div class="col-sm-9">
+          <div class="well text-left">
+            <h3 >{{ post.title}}</h3><p><h4>Date:{{ post.post_date }}</h4></p>
+            <p >Tag: {{ post.tag.all|join:", " }}</p>
+            <p>    <i class="fas fa-eye"></i>
+              <b>Views: {% get_hit_count for post %}</b></p>
+             
+            {{ post.body|safe }}
+            <p class="card-text">{{post.body|striptags|safe }}</p>
+
+              <a href="#" id='play'>Play</a>
+            {% if user.username in post.like.all|join:", " %}
+            <p>
+              <button type="button" class="dislike btn-success btn-sm" data ="{{post.id}}"  id = "like{{post.id}}">
+                <span class="glyphicon glyphicon-thumbs-down" id = "icon{{post.id}}" ></span> 
+              </button>
+              {% else %}
+              <p><button type="button" class="like btn-default btn-sm" data ="{{post.id}}" id = "like{{post.id}}">
+                <span class="glyphicon glyphicon-thumbs-up" id = "icon{{post.id}}" ></span> 
+              </button>
+  
+            {% endif %}
+          :<span><b id = 'likedisplay{{post.id}}'> {{ post.like.count }}</b></span></p>
+          
+          <button class="comment btn btn-large btn-primary" data1 ="{{post.id}}" >Comment
+            {% for comment_f in comment_filter %}
+  
+              {% if comment_f.post_id == post.id %}
+              <span id="total_comment{{post.id}}"> 
+  
+              ({{ comment_f.total }})           </span>
+  
+  
+              <input type="hidden" class = "total_comment_display{{post.id}}" value="{{ comment_f.total }}" />
+                          
+              {% endif %}
+  
+            {% endfor %}
+  
+            <span id="total_comment{{post.id}}"> 
+  
+              {{ comment_f.total }}
+            </span>
+  
+  
+              <input type="hidden" class = "total_comment_display{{post.id}}" value="{{ comment_f.total }}" />
+              
+            </button><br><br>
+            <div id ="comment{{ post.id }}" style="display:none;" data ="{{post.id}}" >
+              <textarea  class ="comment{{post.id}}" ></textarea><br>
+              <input type="submit" class="comment_btn" value ="submit" data1 ="{{post.id}}" id = "like{{post.id}}"/>
+                      <br>
+                      <h2>Comment....</h2>
+                     
+                          {% for i in comment %}
+                            {% if i.post_id == post.id %}
+                            <span id="comment_detail{{post.id}}">
+                               <strong>{{ i.user.username }} - {{ i.date }}</strong><br>
+                                 {{ i.comment }}<hr>
+                              </span>
+  
+                           {% endif %}
+  
+                          {% endfor %}
+                    <span id="comment_detail{{post.id}}">
+                      <strong>{{ i.user.username }} - {{ i.date }}</strong><br>
+                        {{ i.comment }}<hr>
+                     </span>
+  
+                            
+  
+    
+                  <input type="hidden" class="user" value="{{ user.username}}" />
+                                  </div>
+                                  <a href="#"><i class="material-icons">&#xe80d;</i></a>
+                                  <a href="https://plus.google.com/share?url=http://localhost:8000{{ request.get_full_path|urlencode }}">Google</a><br>
+                                  <a href="http://www.linkedin.com/shareArticle?url=http://localhost:8000{{ request.get_full_path|urlencode }}&summary=<your desc>&source=http://localhost:8000 class="linkedin">LinkedIn</a><br>
+                                    <a href="http://www.facebook.com/sharer/sharer.php?u=http://localhost:8000{{ request.get_full_path|urlencode }}">facebook</a><br>
+                                  <br>
+ </div>
+      </div>
+
+    {% endfor %} 
+
+    {%	include	"userApp/pagination.html"	with	users=posts	%}
+  
+    </div>
+    {% include "userApp/search_result.html" %}
+
+</div>
+
+
+    
+  </div>
+</div>
+{% endblock %}
+{% block javascript %}
+<script src="{% static 'js/like_comment.js' %}"></script>
+<script src="{% static 'js/search.js' %}" ></script>
+<script src="{% static 'js/play_sound.js' %}" ></script>
+
+{% endblock %}

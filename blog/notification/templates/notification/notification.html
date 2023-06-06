@@ -1,0 +1,58 @@
+{% extends 'userApp/base.html' %}
+{% load i18n %}
+{% block content %}
+{% load static %}
+{% load humanize %}
+<div class="container text-center" >    
+  <div class="row">
+
+    <div id ="main_content" >
+    </h1>
+      {% for notification in notification  %}
+      <div class="notification"   >
+
+        <div class="col-sm-9">
+
+          <div class="well text-right">
+            <a href="{% url 'delete' notification.id %}" class="delete" style="align-content: center;">X</a>
+          
+          <div class="well text-left">
+              {% if notification.notification_type == 1 %}
+              <a href="{% url 'post' notification.post_id %}" id = "notification" notification_data ="{{ notification.post_id }}">   <b><h4>            <img src="../media/{{ notification.sender.profile.avatar }}" class="img-circle" height="55" width="55" alt="Avatar">
+                Post Like By {{ notification.sender.first_name }}</h4></b></a>
+            {% else %}
+           <a href="{% url 'post' notification.post_id %}" id = "notification" notification_data ="{{ notification.post_id }}" ><b><h4><img src="../media/{{ notification.sender.profile.avatar }}" class="img-circle" height="55" width="55" alt="Avatar">
+                {{ notification.sender.first_name }} Comment On Your Post</h4></b></a>
+            {% endif %}
+            <b><p>{{ notification.date|naturaltime }}</p></b>
+
+            <p>{{ notification.sender.first_name }} </p>
+ 
+           
+            <p >Post :{{ notification.post.title }}</p>
+
+            {% if notification.notification_type == 2 %}
+            <p >Comment :<b>{{ notification.text_preview }}</b></p>
+            {% endif %}
+            <div>
+            
+            </div>
+
+              </div>
+              </div>
+
+
+    
+  </div>
+</div>
+{% endfor %}
+</div>
+</div>
+</div>
+{% endblock %}
+{% block javascript %}
+<script src="{% static 'js/like_comment.js' %}"></script>
+<script src="{% static 'js/search.js' %}" ></script>
+<script src="{% static 'js/notification.js' %}" ></script>
+
+{% endblock %}

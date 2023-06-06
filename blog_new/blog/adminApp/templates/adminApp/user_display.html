@@ -1,0 +1,78 @@
+{% extends 'adminApp/base.html' %}
+{% block headcontent %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+{% endblock %}
+
+{% block content %}
+{% for user in user %}
+
+<div class="container text-center" id = "userdetail{{ user.id }}">    
+    <div class="row">
+      
+      <div class="col-sm-7">
+  
+        <div class="row">
+<div class="col-sm-3" >
+    <div class="well">
+     <p>{{ user.username }}</p>
+     <img src  = "../media/{{ user.profile.avatar}}" class="img-circle" height="55" width="55" >
+    </div>
+  </div>
+  <div class="col-sm-9">
+    <div class="well">
+      <p id = "firstname{{user.id}}">{{ user.first_name}}</p>
+      <p id = "firstname{{user.id}}">{{ user.last_name}}</p>
+      <p id = "firstname{{user.id}}">{{ user.profile.mobileno}}</p>
+      <p id = "firstname{{user.id}}">{{ user.profile.bio}}</p>
+
+      {% if  user.is_staff  == 0 %}
+      <a href="#" class="approve btn btn-success" id=approvebtn{{user.id}} data={{user.id}}> Approve</a>
+      <a href="#" class="delete btn btn-success" id=deletebtn{{user.id}} data={{user.id}}> Delete</a>
+
+      {% endif %}
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+{% endfor %}
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+    $(document).ready(function(){
+        $('.approve').click(function(){
+            id = $(this).attr('data');
+            
+            $.ajax({
+                type:'GET',
+                url : '{% url "approve" %}',
+                data:{
+                    'user_id':id,
+                },
+                success:function(data){
+                    $('#approvebtn'+id).remove()
+                    $('#deletebtn'+id).remove()
+                }
+
+            })
+        })
+
+        $('.delete').click(function(){
+            id = $(this).attr('data')
+            $.ajax({
+                type:'GET',
+                url : '{% url "not_approve" %}',
+                data:{
+                    'user_id': id,
+                },
+                success:function(data){
+                    $('#userdetail'+id).remove()
+                }
+            })
+        })
+    })
+</script>
+{% endblock %}
