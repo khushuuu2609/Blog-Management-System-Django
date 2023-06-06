@@ -1,0 +1,13 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.sub-btn {
+    width: 128px;
+    height: 54px;
+
+    background: #BF2F2F;
+    border-radius: 26px;
+}
