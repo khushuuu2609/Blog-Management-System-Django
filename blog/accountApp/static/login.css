@@ -8,12 +8,11 @@ body {
     display: block;
 }
 
-.sub-btn {
+.sub-btn{
     width: 100px;
     height: 40px;
-    background: #418dba;
+    background-color: #418dba;
     border-radius: 13px;
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 650;
@@ -21,7 +20,16 @@ body {
     line-height: 44px;
     color: #1E1E1E;
     text-transform: capitalize;
+    transition-duration: 0.5s;
+    cursor: pointer;
 }
+.sub-btn:hover{
+    background-color: rgb(153, 122, 199);
+    color: black; 
+    border: 2px solid #008CBA;
+    text-shadow: #1E1E1E;
+}
+
 
 img {
     border-radius: 50%;
@@ -109,3 +117,14 @@ nav {
     
     background: -moz-linear-gradient(180deg, hsla(206, 70%, 83%, 1) 0%, hsla(229, 89%, 62%, 1) 100%);
 }
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    background-color: #155370;
+  }

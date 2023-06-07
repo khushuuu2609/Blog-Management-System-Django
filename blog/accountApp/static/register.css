@@ -46,8 +46,16 @@
     margin: 25%;
     margin-top: 2%;
     margin-bottom: 3%;
+    transition-duration: 0.5s;
+    cursor: pointer;
 }
 
+.btn:hover{
+    background-color: rgb(153, 122, 199); 
+    color: black; 
+    border: 2px solid #008CBA;
+    text-shadow: #1E1E1E;
+}
 .allcss input{
     border: none;
     border: 2px solid black;
