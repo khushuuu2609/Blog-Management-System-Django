@@ -1,84 +1,93 @@
 {% extends 'accountApp/base.html' %}
 {% block headcontent %}
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+{%load static%}
+<link rel="stylesheet" href="{% static 'register.css'%}">
 {% endblock %}
 {% block content %}
 
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-8">
+        <div class="col-8 blogtitle">
           <h1 class="mt-2">Blog Registration</h1>
 
+          <div class="partication">
+            <div class="parc">
           <hr class="mt-0 mb-4">
-          <form method="POST" enctype="multipart/form-data">
+          <form method="POST" enctype="multipart/form-data" class="formcss">
             {% csrf_token %}
             {{userform.error}}
             
-
-            <div class="form-group">
+            <div class="formcs">
+            <div class="form-group allcss">
               <label for="email">Username:</label>
               {{ userform.username }}
             </div>
            
 
-            <div class="form-group">
+            <div class="form-group allcss">
               <label for="email">Email address:</label>
               {{ userform.email }}
             </div>
+          </div>
 
           <div class="row">
-            <div class="col-6">
+            <div class="col-6 allcss">
               firstname
               {{ userform.first_name }}
             </div>
-            <div class="col-6">
-              last name
+            <br>
+            <div class="col-6 allcss">
+              Last name
               {{ userform.last_name }}
             </div>
           </div>
           <br>
 
           <div class="row">
-          <div class="col-6">
+          <div class="col-6 allcss">
             Password
           {{ userform.password }}
           </div>
-            <div class="col-6">
+          <br>
+            <div class="col-6 allcss">
               mobile no
               {{ profileform.mobileno }}
             </div>
           </div>
-          <br>
+        </div>
 
-            
+        <div class="parc">
+          <br>
             <div class="col">
               Profile Image
               {{ profileform.avatar }}
-               <img id="my_image" src="#"/>
+               <img class="image" id="my_image" src="#"/>
             </div>
             <br>
           
           <div class="col">
-            <div class="col-6">
+            <div class="col-6 allcss">
+              Birth Date
               {{ profileform.birth_date }}
             </div>
           </div>
           <br>
 
 
-            <div class="col-6">
-              location
+            <div class="col-6 allcss">
+              Location
               {{ profileform.location }}
             </div>
             <br>
           
 
-            <div class="col-6">
+            <div class="col-6 allcss">
               Profile Bio
           {{ profileform.bio }}
             </div>
           <br>
+          </div>
+          </div>
 
           <button type="submit" class="btn btn-success">Register</button>
         </form>
