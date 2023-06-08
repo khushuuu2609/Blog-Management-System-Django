@@ -14,7 +14,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <style>
     #myDIV {
       width: 100%;
@@ -31,6 +31,17 @@
     }
   </style>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script>
+    function myFunction() {
+      var x = document.getElementById("new");
+      if (x.style.display === "block") {
+        x.style.display = "none";
+      } else {
+        x.style.display = "block";
+      }
+    }
+    </script>
+    
 </head>
 <body> 
 
@@ -41,6 +52,7 @@
       <a class="navbar-brand" href="{% url 'login' %}"><img class="img" src="{% static 'logo.png' %}"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
+      <div class="pars">
       <ul class="nav navbar-nav">
         <li class="active"><a href="{% url 'login' %}">Home</a></li>
         <li><a href="{% url 'blog' %}">Add Blog</a></li>
@@ -49,43 +61,31 @@
         <span class = "badge">{{ count_notification }}</span>
         {% endif %}
         <li><a href="{% url 'notification' %}">Notification</a></li>
-
+        <input type="text" class="form-control" id ="search" placeholder="Search..">
       </ul>
-      
-      <ul class="nav navbar-nav navbar-right">
-        {% load static %}
-        <a class="navbar-brand"><img class="logo" src="{% static 'css/acc.ico' %}"></a>
+      <div class="navbar-form navbar-right" role="search">
+        <div class="form-group input-group">
+        
+      <ul class="nav navbar-nav navbar-right" id="new">
         <li><a href="{% url 'update' %}"><span class="glyphicon glyphicon-user"> 
         </span> {{ user.first_name }}</a></li>
         <li><a href="{% url 'logout' %}">Logout</a></li>
         <li><a href="{% url 'password_change' %}"> Change Password </a></li>
-        <div class="navbar-form navbar-right" role="search">
-        <div class="form-group input-group">
-          <input type="text" class="form-control" id ="search" placeholder="Search..">
-         
           <span class="input-group-btn">
               <span class="glyphicon glyphicon-search"></span>
+              
             </button>
           </span>        
         </div>
       </div>
-
       </ul>
     </div>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <i class="fa fa-user fa-3x"></i>
+    </a>
+  </div>
   </div>
 </nav>
-
-<div class="topnav">
-  <a href="#home" class="active">Logo</a>
-  <!-- Navigation links (hidden by default) -->
-  <div id="myLinks">
-    <a href="#news">News</a>
-    <a href="#contact">Contact</a>
-    <a href="#about">About</a>
-  </div>
-  <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
-  
-</div>
 {% block content %}
 {% endblock %}
 

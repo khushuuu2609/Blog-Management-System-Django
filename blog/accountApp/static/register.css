@@ -51,8 +51,8 @@
 }
 
 .btn:hover{
-    background-color: rgb(153, 122, 199); 
-    color: black; 
+    background-color: #e589ce; 
+    color: rgb(170, 22, 22); 
     border: 2px solid #008CBA;
     text-shadow: #1E1E1E;
 }

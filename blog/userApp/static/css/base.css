@@ -1,16 +1,17 @@
-.container-fluid,#myNavbar,ul{
+.container-fluid,#myNavbar,.nav{
     display: flex;
     text-decoration: none;
-    align-items: center;
     justify-content: space-around;
     background-color: #418dba;
     font-size: 20px;
 }
-
+.container-fluid{
+  justify-content: space-between;
+}
 
 li a {
     display: block;
-    color: rgb(13, 12, 12);
+    color: rgb(12, 12, 13);
     padding: 14px 16px;
     text-decoration: none;
     background-color: #418dba;
@@ -19,7 +20,8 @@ li a {
 }
   
   li a:hover {
-    background-color: #36464e;
+    background-color: #e589ce;
+    color: rgb(155, 13, 13);
   }
 
 .form-control{
@@ -40,12 +42,7 @@ ul{
     height: 100px;
     border: 2px solid black;
 }
-.logo{
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    border: 2px solid black;
-}
+
 .glyphicon{
     color: black;
 }
@@ -58,36 +55,30 @@ ul{
   }
   
   /* Hide the links inside the navigation menu (except for logo/home) */
-  .topnav #myLinks {
+  .collapse  #new  {
     display: none;
   }
   
   /* Style navigation menu links */
-  .topnav a {
-    color: white;
+.collapse {
+    color: rgb(0, 0, 0);
     padding: 14px 16px;
-    text-decoration: none;
     font-size: 17px;
     display: block;
   }
-  
-  /* Style the hamburger menu */
-  .topnav a.icon {
-    background: black;
-    display: block;
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  
-  /* Add a grey background color on mouse-over */
-  .topnav a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-  
-  /* Style the active link (or home/logo) */
-  .active {
-    background-color: #04AA6D;
-    color: white;
-  }
+#new {
+  display: block;
+  position: absolute;
+  right: 20px;
+  top: 100px;
+  list-style: circle;
+  border: #020202;
+}
+#new a:hover {
+  background-color: #e589ce;
+  color:rgb(155, 13, 13);
+}
+.pars{
+  justify-content: end;
+  margin-right: 15px;
+}
