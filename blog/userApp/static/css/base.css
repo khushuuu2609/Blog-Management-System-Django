@@ -1,4 +1,93 @@
-.navbar{
-    background-color: aqua;
-    border: 10px solid red;
+.container-fluid,#myNavbar,ul{
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #418dba;
+    font-size: 20px;
 }
+
+
+li a {
+    display: block;
+    color: rgb(13, 12, 12);
+    padding: 14px 16px;
+    text-decoration: none;
+    background-color: #418dba;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+  
+  li a:hover {
+    background-color: #36464e;
+  }
+
+.form-control{
+    border: none;
+    border: 2px solid black;
+    border-radius: 20px;
+    width: 250px;
+    height: 30px; 
+    text-align: center;
+}
+
+ul{
+    list-style: none;
+}
+.img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+}
+.logo{
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    border: 2px solid black;
+}
+.glyphicon{
+    color: black;
+}
+
+/* Style the navigation menu */
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+    position: relative;
+  }
+  
+  /* Hide the links inside the navigation menu (except for logo/home) */
+  .topnav #myLinks {
+    display: none;
+  }
+  
+  /* Style navigation menu links */
+  .topnav a {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+  }
+  
+  /* Style the hamburger menu */
+  .topnav a.icon {
+    background: black;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  
+  /* Add a grey background color on mouse-over */
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  /* Style the active link (or home/logo) */
+  .active {
+    background-color: #04AA6D;
+    color: white;
+  }
