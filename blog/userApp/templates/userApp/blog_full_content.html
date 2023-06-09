@@ -28,8 +28,7 @@
               <h3 class="post-title">{{ post.title}}</h3><p><small>Date:{{ post.post_date }}</small></p>
             </div>
             <div class="blog-content">
-            <h4 class="tags">Tag:</h4> 
-            <p>{{ post.tag.all|join:", " }}</p>
+              <p class="tags" ><b>Tags:</b> {{ post.tag.all|join:", " }},</p>
             <p>    <i class="fa fa-eye"></i>
               <b>Views: {% get_hit_count for post %}</b></p>
              
@@ -39,18 +38,19 @@
               <a href="#" id='play'>Play</a>
             {% if user.username in post.like.all|join:", " %}
             <p>
-              <button type="button" class="dislike btn-success btn-sm" data ="{{post.id}}"  id = "like{{post.id}}">
-                <i id = "icon{{post.id}}" class="fa-thumbs-down"></i>
+              <button type="button" class="dislike btn-success btn-sm like-btn" data ="{{post.id}}"  id = "like{{post.id}}">
+                <i id = "icon{{post.id}}" class="fa fa-thumbs-down"></i>
               </button>
               {% else %}
-              <p><button type="button" value = "like" class="like btn-default btn-sm" data ="{{post.id}}" id = "like{{post.id}}">
+              <p><button type="button" value = "like" class="like btn-default btn-sm like-btn" data ="{{post.id}}" id = "like{{post.id}}">
                 <i id = "icon{{post.id}}" class="fa fa-thumbs-up"></i>
               </button>
   
             {% endif %}
-          :<span><b id = 'likedisplay{{post.id}}'> {{ post.like.count }}</b></span></p>
+          :<span><b id = 'likedisplay{{post.id}}'> {{ post.like.count }}</b></span>
+        </p>
           
-          <button class="comment btn btn-large btn-primary" data1 ="{{post.id}}" >Comment
+          <button class="comment btn btn-large btn-primary comment-btn" data1 ="{{post.id}}" >Comment
             {% for comment_f in comment_filter %}
   
               {% if comment_f.post_id == post.id %}
@@ -76,7 +76,7 @@
             </button><br><br>
             <div id ="comment{{ post.id }}" style="display:none;" data ="{{post.id}}" >
               <textarea  class ="comment{{post.id}}" ></textarea><br>
-              <input type="submit" class="comment_btn" value ="submit" data1 ="{{post.id}}" id = "like{{post.id}}"/>
+              <input type="submit" class="comment_btn comment-sub" value ="submit" data1 ="{{post.id}}" id = "like{{post.id}}"/>
                       <br>
                       <h2>Comment....</h2>
                      

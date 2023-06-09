@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* font-family: poppins;  */
+  font-family: poppins; 
 }
 
 .container-fluid,
@@ -89,6 +89,7 @@ ul {
   top: 100px;
   list-style: circle;
   border: #020202;
+  z-index: 100;
 }
 
 #new a:hover {
