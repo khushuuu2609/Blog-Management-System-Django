@@ -5,6 +5,8 @@
 
 {% block content %}
 {% load static %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'css/full_blog.css'%}">
 <div class="container text-center" >    
   <div class="row">
 
@@ -33,11 +35,11 @@
             {% if user.username in post.like.all|join:", " %}
             <p>
               <button type="button" class="dislike btn-success btn-sm" data ="{{post.id}}"  id = "like{{post.id}}">
-                <span class="glyphicon glyphicon-thumbs-down" id = "icon{{post.id}}" ></span> 
+                <i id = "icon{{post.id}}" class="fa-thumbs-down"></i>
               </button>
               {% else %}
-              <p><button type="button" class="like btn-default btn-sm" data ="{{post.id}}" id = "like{{post.id}}">
-                <span class="glyphicon glyphicon-thumbs-up" id = "icon{{post.id}}" ></span> 
+              <p><button type="button" value = "like" class="like btn-default btn-sm" data ="{{post.id}}" id = "like{{post.id}}">
+                <i id = "icon{{post.id}}" class="fa fa-thumbs-up"></i>
               </button>
   
             {% endif %}

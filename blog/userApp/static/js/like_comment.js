@@ -25,8 +25,8 @@ $(document).ready(function(){
         $( '#like'+ id ).addClass('dislike btn-success btn-sm');
 
         $('#like' + id).attr('Dislike')
-        $('#icon'+ id).removeClass('glyphicon glyphicon-thumbs-up')
-        $('#icon'+ id).addClass('glyphicon glyphicon-thumbs-down')              
+        $('#icon'+ id).removeClass('fa fa-thumbs-up')
+        $('#icon'+ id).addClass('fa fa-thumbs-down')              
 
       }
     });
@@ -53,8 +53,8 @@ $(document).ready(function(){
                     $( '#like'+ id ).removeClass('dislike btn-success btn-sm');
                     $( '#like'+ id ).addClass('like btn-default btn-sm');
 
-                    $('#icon'+ id).removeClass('glyphicon glyphicon-thumbs-down')
-                    $('#icon'+ id).addClass('glyphicon glyphicon-thumbs-up')
+                    $('#icon'+ id).removeClass('fa fa-thumbs-down')
+                    $('#icon'+ id).addClass('fa fa-thumbs-up')
                 }
         })
       })
