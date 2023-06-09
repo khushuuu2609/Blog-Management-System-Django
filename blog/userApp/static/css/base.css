@@ -84,7 +84,7 @@ ul {
 
 #new {
   display: block;
-  position: absolute;
+  margin-left: 800px;
   right: 20px;
   top: 100px;
   list-style: circle;
