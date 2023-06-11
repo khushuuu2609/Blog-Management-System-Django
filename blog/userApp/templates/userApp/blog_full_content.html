@@ -2,9 +2,10 @@
 {% load i18n %}
 {% load social_share %}
 {% load hitcount_tags %}
-
 {% block content %}
 {% load static %}
+{% load humanize %}
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="{% static 'css/full_blog.css'%}">
 <div class="container text-center" >    
@@ -50,60 +51,96 @@
           :<span><b id = 'likedisplay{{post.id}}'> {{ post.like.count }}</b></span>
         </p>
           
-          <button class="comment btn btn-large btn-primary comment-btn" data1 ="{{post.id}}" >Comment
-            {% for comment_f in comment_filter %}
-  
-              {% if comment_f.post_id == post.id %}
-              <span id="total_comment{{post.id}}"> 
-  
-              ({{ comment_f.total }})           </span>
-  
-  
-              <input type="hidden" class = "total_comment_display{{post.id}}" value="{{ comment_f.total }}" />
-                          
-              {% endif %}
-  
-            {% endfor %}
-  
+        <button class="comment btn btn-large btn-primary comment-btn" data1 ="{{post.id}}" >Comment
+          {% for comment_f in comment_filter %}
+
+            {% if comment_f.post_id == post.id %}
             <span id="total_comment{{post.id}}"> 
-  
-              {{ comment_f.total }}
-            </span>
-  
-  
-              <input type="hidden" class = "total_comment_display{{post.id}}" value="{{ comment_f.total }}" />
-              
-            </button><br><br>
-            <div id ="comment{{ post.id }}" style="display:none;" data ="{{post.id}}" >
-              <textarea  class ="comment{{post.id}}" ></textarea><br>
-              <input type="submit" class="comment_btn comment-sub" value ="submit" data1 ="{{post.id}}" id = "like{{post.id}}"/>
-                      <br>
-                      <h2>Comment....</h2>
-                     
-                          {% for i in comment %}
-                            {% if i.post_id == post.id %}
-                            <span id="comment_detail{{post.id}}">
-                               <strong>{{ i.user.username }} - {{ i.date }}</strong><br>
-                                 {{ i.comment }}<hr>
-                              </span>
-  
-                           {% endif %}
-  
-                          {% endfor %}
-                    <span id="comment_detail{{post.id}}">
-                      <strong>{{ i.user.username }} - {{ i.date }}</strong><br>
-                        {{ i.comment }}<hr>
-                     </span>
-  
+
+            ({{ comment_f.total }})</span>
+
+
+            <input type="hidden" class = "total_comment_display{{post.id}}" value="{{ comment_f.total }}" />
+                        
+            {% endif %}
+
+          {% endfor %}
+
+          <span id="total_comment{{post.id}}"> 
+
+            {{ comment_f.total }}
+          </span>
+
+
+            <input type="hidden" class = "total_comment_display{{post.id}}" value="{{ comment_f.total }}" />
+            
+          </button><br><br>
+          <div id ="comment{{ post.id }}" style="display:none;" data ="{{post.id}}" >
+            <textarea  class ="comment{{post.id}} comment-tbox" ></textarea><br>
+            <input type="submit" class="comment_btn comment-sub" value ="submit" data1 ="{{post.id}}" id = "like{{post.id}}"/>
+                    <br>
+                    {% comment %} <h2>Comments</h2> {% endcomment %}
+                   
+                        {% for i in comment %}
+                          {% if i.post_id == post.id and i.parent_id == None %}
+                          <span id="comment_detail{{post.id}}">
+                             <strong>{{ i.user.username }}- {{ i.date }}</strong><br>
+                               {{ i.comment }}<hr>
                             
-  
-    
-                  <input type="hidden" class="user" value="{{ user.username}}" />
+                              </span> 
+                            <button class="reply btn btn-large btn-primary" data1 ="{{i.id}}">Reply</button><br>
+                          
+                            <div id ="reply{{ i.id }}" style="display:none;" data ="{{ i.id}}" >
+                            <textarea  class ="reply{{ i.id}} comment-tbox" ></textarea><br>
+                            <input type="submit" class="reply_btn" value ="submit" data1 ="{{ i.id}}" id = "comment{{post.id}}"/>
+                            <input type="hidden" class="post" id ="post" value="{{ post.id }}">
+        
+                            <br>
+                            {% for j in comment %}
+
+                            {% if j.parent_id == i.id %}
+                            <span>Reply By:</span>
+
+                            <span id="reply_detail{{i.id}}">
+                          
+
+                              <strong>{{ j.user.username }} - {{ j.date }}</strong><br>
+                                {{ j.comment }}<hr>
+                            </span>
+                            {% endif %}
+
+                            
+                            {% endfor %}
+                            
+                            <span>Reply By:</span>
+
+                            <span id="reply_detail{{i.id}}">
+                          
+
+                              <strong>{{ j.user.username }} - {{ j.date }}</strong><br>
+                                {{ j.comment }}<hr>
+                            </span>
+                            
+                                   </div>
+                   <hr>
+
+                         {% endif %}
+
+                        {% endfor %}
+                 <br> 
+                 {% comment %} <span id="comment_detail{{post.id}}">
+                    <strong>{{ i.user.username }} - {{ i.date }}</strong><br>
+                      {{ i.comment }}<hr>
+                    </span> {% endcomment %}
+
+                   
+              </div><br>
+            <input type="hidden" class="user" value="{{ user.username}}" />
                     </div>
                                   </div>
                                   <a href="#"><i class="material-icons">&#xe80d;</i></a>
                                   <a href="https://plus.google.com/share?url=http://localhost:8000{{ request.get_full_path|urlencode }}">Google</a><br>
-                                  <a href="http://www.linkedin.com/shareArticle?url=http://localhost:8000{{ request.get_full_path|urlencode }}&summary=<your desc>&source=http://localhost:8000 class="linkedin">LinkedIn</a><br>
+                                  <a href="http://www.linkedin.com/shareArticle?url=http://localhost:8000{{ request.get_full_path|urlencode }}&summary=<your desc>&source=http://localhost:8000" class="linkedin">LinkedIn</a><br>
                                     <a href="http://www.facebook.com/sharer/sharer.php?u=http://localhost:8000{{ request.get_full_path|urlencode }}">facebook</a><br>
                                   <br>
  </div>

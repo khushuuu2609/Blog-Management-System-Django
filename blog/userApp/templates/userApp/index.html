@@ -72,22 +72,26 @@
             
           </button><br><br>
           <div id ="comment{{ post.id }}" style="display:none;" data ="{{post.id}}" >
-            <textarea  class ="comment{{post.id}}" ></textarea><br>
+            <textarea  class ="comment{{post.id}} comment-tbox" ></textarea><br>
             <input type="submit" class="comment_btn comment-sub" value ="submit" data1 ="{{post.id}}" id = "like{{post.id}}"/>
                     <br>
-                    <h2>Comment....</h2>
+                    <h2>Comments</h2>
                    
                         {% for i in comment %}
                           {% if i.post_id == post.id and i.parent_id == None %}
                           <span id="comment_detail{{post.id}}">
-                             <strong>{{ i.user.username }}- {{ i.date }}</strong><br>
-                               {{ i.comment }}<hr>
+                            <strong>{{ i.user.username }}- {{ i.date }}</strong><br>
+                            <div class="comnt-box">
+                               {{ i.comment }}
+                               <button class="reply btn btn-large btn-primary" data1 ="{{i.id}}">Reply</button>
+                            </div>
+                               <hr>
                             
                               </span> 
-                            <button class="reply btn btn-large btn-primary" data1 ="{{i.id}}">Reply</button><br>
+                            <br>
                           
                             <div id ="reply{{ i.id }}" style="display:none;" data ="{{ i.id}}" >
-                            <textarea  class ="reply{{ i.id}}" ></textarea><br>
+                            <textarea  class ="reply{{ i.id}} comment-tbox" ></textarea><br>
                             <input type="submit" class="reply_btn" value ="submit" data1 ="{{ i.id}}" id = "comment{{post.id}}"/>
                             <input type="hidden" class="post" id ="post" value="{{ post.id }}">
         
@@ -118,15 +122,16 @@
                             </span>
                             
                                    </div>
-                   <hr>
+                   {% comment %} <hr> {% endcomment %}
 
                          {% endif %}
 
                         {% endfor %}
-                 <br> <span id="comment_detail{{post.id}}">
+                 <br> 
+                 {% comment %} <span id="comment_detail{{post.id}}">
                     <strong>{{ i.user.username }} - {{ i.date }}</strong><br>
                       {{ i.comment }}<hr>
-                    </span>
+                    </span> {% endcomment %}
 
                    
               </div><br>

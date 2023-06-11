@@ -1,0 +1,14 @@
+.profile-container{
+    display: flex;
+    max-width: 400px;
+}
+.profile-data{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    margin: 0px 24px;
+}
+.profile-name{
+    font-weight: 800;
+}
