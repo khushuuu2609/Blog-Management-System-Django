@@ -18,8 +18,9 @@
     <div class="col-sm-7">
     <form method="POST">
         {% csrf_token %}
-        {{ postform.media }}
-      {{ postform.as_p}}
+       <div class="add-block">
+      {{ postform.media }}
+      {{ postform.as_p}}</div>
       <input type="submit" name="submit" value="Submit" /> 
     </form>  
     </div>
