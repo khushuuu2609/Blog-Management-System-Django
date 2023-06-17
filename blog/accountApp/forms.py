@@ -28,13 +28,13 @@ class UserForm(forms.ModelForm):
     
 class ProfileForm(forms.ModelForm):
 
-    YEARS= [x for x in range(1940,2021)]
+    YEARS= [x for x in range(1940,2023)]
     #year range define
 
     birth_date = forms.DateField(widget=forms.SelectDateWidget(years= YEARS))
     class Meta:
         model = Profile
-        fields = ('mobileno','location','bio','location','avatar')
+        fields = ('mobileno','location','bio','avatar')
     
     def clean_mobileno(self):
         #mobileno not digit or 10 digit validation
