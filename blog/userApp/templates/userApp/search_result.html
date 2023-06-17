@@ -1,14 +1,15 @@
 
-    
   <div id ="search-results" >
     {% for post in posts_d  %}
-    <div class="row"    >
-      <div class="col-sm-3">
-        <div class="well">
-         <p>{{ post.author.first_name }} </p>
-         <p>{{ post.post_date}}</p>
+    <div class="row post-blog">
+      <div class="col-sm-3 divider">
+        <div class="well blog-part-1">
+          <img src="../media/{{ post.author.profile.avatar }}" class="img-circle" height="55" width="55" alt="Avatar">
+          <div class="part-1-title">
+            <p class="user-title">{{ post.author.first_name }} </p>
+            <p>{{ post.post_date}}</p>
+          </div>
 
-         <img src="../media/{{ post.author.profile.avatar }}" class="img-circle" height="55" width="55" alt="Avatar">
         </div>
       </div>
       <div class="col-sm-9">
@@ -21,18 +22,18 @@
 
           {% if user.username in post.like.all|join:", " %}
           <p>
-            <button type="button" class="dislike btn-success btn-sm" data ="{{post.id}}"  id = "like{{post.id}}">
+            <button type="button" class="dislike btn-success btn-sm like-btn" data ="{{post.id}}"  id = "like{{post.id}}">
               <i id = "icon{{post.id}}" class="fa fa-thumbs-down"></i>
             </button>
             {% else %}
-            <p><button type="button" class="like btn-default btn-sm" data ="{{post.id}}" id = "like{{post.id}}">
+            <p><button type="button" class="like btn-default btn-sm like-btn" data ="{{post.id}}" id = "like{{post.id}}">
               <i id = "icon{{post.id}}" class="fa fa-thumbs-up"></i>
             </button>
 
           {% endif %}
         :<span><b id = 'likedisplay{{post.id}}'> {{ post.like.count   }}</b></span></p>
         
-        <button class="comment btn btn-large btn-primary" data1 ="{{post.id}}" >Comment
+        <button class="comment btn btn-large comment-btn comment-sub" data1 ="{{post.id}}" >Comment
           {% for comment_f in comment_filter %}
 
             {% if comment_f.post_id == post.id %}
