@@ -1,9 +1,11 @@
 .container {
-    background: hsla(206, 70%, 83%, 1);
+    /* background: hsla(206, 70%, 83%, 1);
 
     background: linear-gradient(180deg, hsla(206, 70%, 83%, 1) 0%, hsla(229, 89%, 62%, 1) 100%);
 
-    background: -moz-linear-gradient(180deg, hsla(206, 70%, 83%, 1) 0%, hsla(229, 89%, 62%, 1) 100%);
+    background: -moz-linear-gradient(180deg, hsla(206, 70%, 83%, 1) 0%, hsla(229, 89%, 62%, 1) 100%); */
+    background-image: url(./Frame\ 9.jpg);
+    background-size: cover;
     min-height: 100vh;
     position: relative;
     background-attachment: fixed;
@@ -16,6 +18,7 @@
     max-width: 80vw;
     border-radius: 24px;
     box-shadow: 0 5px 20px black;
+    backdrop-filter: blur(3px);
 }
 
 .post-container {

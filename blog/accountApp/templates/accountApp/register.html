@@ -1,120 +1,100 @@
-{% extends 'accountApp/base.html' %}
-{% block headcontent %}
-{%load static%}
-<link rel="stylesheet" href="{% static 'register.css'%}">
-{% endblock %}
-{% block content %}
+{% extends 'accountApp/base.html' %} {% block headcontent %} {%load static%}
+<link rel="stylesheet" href="{% static 'register.css'%}" />
+{% endblock %} {% block content %}
 
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-8 blogtitle">
-          <h1 class="mt-2">Blog Registration</h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-8 blogtitle">
+      <h1 class="mt-2 title-form">Blog Registration</h1>
 
-          <div class="partication">
-            <div class="parc">
-          <hr class="mt-0 mb-4">
-          <form method="POST" enctype="multipart/form-data" class="formcss">
-            {% csrf_token %}
-            {{userform.error}}
-            
-            <div class="formcs">
-            <div class="form-group allcss">
-              <label for="email">Username:</label>
-              {{ userform.username }}
-            </div>
-           
-
-            <div class="form-group allcss">
-              <label for="email">Email address:</label>
-              {{ userform.email }}
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-6 allcss">
-              firstname
-              {{ userform.first_name }}
-            </div>
-            <br>
-            <div class="col-6 allcss">
-              Last name
-              {{ userform.last_name }}
-            </div>
-          </div>
-          <br>
-
-          <div class="row">
-          <div class="col-6 allcss">
-            Password
-          {{ userform.password }}
-          </div>
-          <br>
-            <div class="col-6 allcss">
-              mobile no
-              {{ profileform.mobileno }}
-            </div>
-          </div>
-        </div>
-
+      <div class="partication">
         <div class="parc">
-          <br>
-            <div class="col">
-              Profile Image
-              {{ profileform.avatar }}
-               <img class="image" id="my_image" src="#"/>
-            </div>
-            <br>
-          
-          <div class="col">
-            <div class="col-6 allcss">
-              Birth Date
-              {{ profileform.birth_date }}
-            </div>
-          </div>
-          <br>
+          <form method="POST" enctype="multipart/form-data" class="formcss">
+            <table>
+              {% csrf_token %} {{userform.error}}
 
+              <tr>
+                <td><label for="email">Username</label></td>
+                <td>{{ userform.username }}</td>
+              </tr>
 
-            <div class="col-6 allcss">
-              Location
-              {{ profileform.location }}
-            </div>
-            <br>
-          
+              <tr>
+                <td><label for="email">Email address</label></td>
+                <td>{{ userform.email }}</td>
+              </tr>
 
-            <div class="col-6 allcss">
-              Profile Bio
-          {{ profileform.bio }}
-            </div>
-          <br>
-          </div>
-          </div>
+              <tr>
+                <td>firstname</td>
+                <td>{{ userform.first_name }}</td>
+              </tr>
 
-          <button type="submit" class="btn btn-success">Register</button>
-        </form>
+              <tr>
+                <td>Last name</td>
+                <td>{{ userform.last_name }}</td>
+              </tr>
+
+              <tr>
+                <td>Password</td>
+                <td>{{ userform.password }}</td>
+              </tr>
+
+              <tr>
+                <td>mobile no</td>
+                <td>{{ profileform.mobileno }}</td>
+              </tr>
+            </table>
+            <table>
+              <tr>
+                <td>Profile Image</td>
+                <td>{{ profileform.avatar }}</td>
+                <td><img class="image" id="my_image" src="#" /></td>
+              </tr>
+
+              <tr>
+                <td>Birth Date</td>
+                <td>{{ profileform.birth_date }}</td>
+              </tr>
+
+              <tr>
+                <td>Location</td>
+                <td>{{ profileform.location }}</td>
+              </tr>
+
+              <tr>
+                <td>Profile Bio</td>
+                <td>{{ profileform.bio }}</td>
+              </tr>
+              <tr>
+                <td>
+                  <button type="submit" class="btn btn-success">
+                    Register
+                  </button>
+                </td>
+              </tr>
+            </table>
+          </form>
         </div>
       </div>
     </div>
-{% endblock %}
-{% load static %}
-{% block javascript %}
-<script>
-  $(document).ready(function(){
-    function readURL(input) {
-      if (input.files && input.files[0]) {
-          var reader = new FileReader();
+    {% endblock %} {% load static %} {% block javascript %}
+    <script>
+      $(document).ready(function () {
+        function readURL(input) {
+          if (input.files && input.files[0]) {
+            var reader = new FileReader();
 
-          reader.onload = function (e) {
-              $('#my_image').attr('src', e.target.result);
+            reader.onload = function (e) {
+              $("#my_image").attr("src", e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
           }
-
-          reader.readAsDataURL(input.files[0]);
-      }
-  }
-  $('.clearablefileinput').change(function(){
-      readURL(this);
-
-  });
-
-  })
-</script>
-{% endblock %}
+        }
+        $(".clearablefileinput").change(function () {
+          readURL(this);
+        });
+      });
+    </script>
+    {% endblock %}
+  </div>
+</div>

@@ -8,7 +8,7 @@ body {
     display: block;
 }
 
-.sub-btn{
+.sub-btn {
     width: 100px;
     height: 40px;
     background-color: #418dba;
@@ -23,9 +23,10 @@ body {
     transition-duration: 0.5s;
     cursor: pointer;
 }
-.sub-btn:hover{
-    background-color:#e589ce;
-    color: rgb(196, 28, 28); 
+
+.sub-btn:hover {
+    background-color: #e589ce;
+    color: rgb(196, 28, 28);
     border: 2px solid #008CBA;
     text-shadow: #1E1E1E;
 }
@@ -68,64 +69,68 @@ nav {
     margin-right: 150px;
 }
 
-.li a{
+.li a {
     text-decoration: none;
 }
 
-.nav-search,.form-control{
+.nav-search,
+.form-control {
     border: none;
     border: 3px solid black;
     border-radius: 23px;
     width: 250px;
-    height: 40px; 
+    height: 40px;
     text-align: center;
 }
 
-.aboutus{
+.aboutus {
     text-align: center;
 }
 
-#login{
+#login {
     position: relative;
     top: none;
     left: 40%;
 }
 
-.text-info{
- color: midnightblue;   
- font-size: 20px;
- font-weight: bold;
+.text-info {
+    color: midnightblue;
+    font-size: 20px;
+    font-weight: bold;
 }
 
-.text-white{
+.text-white {
     font-size: 50px;
     color: blue;
 }
 
-.form-group,.text-right{
+.form-group,
+.text-right {
     margin: 30px;
 }
 
-.text-right{
+.text-right {
     margin: 70px;
 }
 
-.bg{
-    background: hsla(206, 70%, 83%, 1);
+.bg {
+    background: #EBEBEB;
 
-    background: linear-gradient(180deg, hsla(206, 70%, 83%, 1) 0%, hsla(229, 89%, 62%, 1) 100%);
-    
-    background: -moz-linear-gradient(180deg, hsla(206, 70%, 83%, 1) 0%, hsla(229, 89%, 62%, 1) 100%);
+    /* background: linear-gradient(180deg, hsla(206, 70%, 83%, 1) 0%, hsla(229, 89%, 62%, 1) 100%); */
+    background-image: url(./Frame\ 9.jpg);
+    background-size: cover;
+
 }
+
 li a {
     display: block;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-  }
-  
-  li a:hover {
+}
+
+li a:hover {
     background-color: #e589ce;
- 
-  }
+
+}

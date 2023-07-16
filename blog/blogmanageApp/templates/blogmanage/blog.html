@@ -4,11 +4,10 @@
 <div class="container text-center">    
   <div class="row">
     <div class="col-sm-3 well">
-      <div class="well">
-        <p><a href="#">{{ user.first_name }}</a></p>
+      <div class="">
+        <p><a href="{% url 'update' %}">{{ user.first_name }}</a></p>
         <img src="../media/{{ user.profile.avatar }} " class="img-circle" height="65" width="65" alt="{{ user.first_name }}">
       </div>
-      
       <p>{{ user.profile.mobileno }}</p>
       <p>{{ user.profile.location }}</a></p>
       <p>{{ user.profile.bio }}</p>
@@ -16,7 +15,7 @@
     <div class="col-sm-7">
     <form method="POST">
         {% csrf_token %}
-        {{ postform.media }}
+      {{ postform.media }}
       {{ postform.as_p}}
       <input type="submit" name="submit" value="Submit" /> 
     </form>  

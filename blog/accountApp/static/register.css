@@ -1,36 +1,41 @@
-.container{
-    color: rgb(9, 9, 9);   
+.container {
+    color: rgb(9, 9, 9);
     font-size: 20px;
     font-weight: bold;
-    background: hsla(206, 70%, 83%, 1);
+    /* background-image: url(./pxfuel.jpg); */
+    /* background: hsla(206, 70%, 83%, 1); */
 
-    background: linear-gradient(180deg, hsla(206, 70%, 83%, 1) 0%, hsla(229, 89%, 62%, 1) 100%);
-    
-    background: -moz-linear-gradient(180deg, hsla(206, 70%, 83%, 1) 0%, hsla(229, 89%, 62%, 1) 100%);
+    /* background: linear-gradient(180deg, hsla(206, 70%, 83%, 1) 0%, hsla(229, 89%, 62%, 1) 100%); */
 }
-.image{
+
+.image {
     display: none;
 }
 
-.formcss{
-   display: flex; 
-   flex-direction: column;
-   align-items: center;
-}
-
-.formcs{
-    margin-left: 40px;
-}
-
-.partication{
+.formcss {
+    /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; */
     display: flex;
     align-items: center;
     justify-content: space-around;
+    height: 50vh;
+}
+
+.formcs {
+    margin-left: 40px;
+}
+
+.partication {
+    /* display: flex;
+    align-items: center;
+    justify-content: space-around; */
     width: 60%;
 
 }
 
-.btn{
+.btn {
     width: 100px;
     height: 40px;
     background: #37799f;
@@ -50,22 +55,34 @@
     cursor: pointer;
 }
 
-.btn:hover{
-    background-color: #e589ce; 
-    color: rgb(170, 22, 22); 
+.btn:hover {
+    background-color: #e589ce;
+    color: rgb(170, 22, 22);
     border: 2px solid #008CBA;
     text-shadow: #1E1E1E;
 }
-.allcss input{
+
+td input:not([type=file]) {
     border: none;
     border: 2px solid black;
     border-radius: 10px;
     width: 200px;
-    height: 30px; 
+    height: 30px;
 }
-
-.allcss textarea,select{
+td input,textarea{
+    margin: 5px 0px;
+    padding: 0px 10px;
+}
+td textarea,
+select {
     border: none;
     border: 2px solid black;
-    border-radius: 10px; 
+    border-radius: 10px;
+}
+td textarea{
+    height: 80px;
+    width: 220px;
+}
+.title-form{
+    margin-left: 30px;
 }
