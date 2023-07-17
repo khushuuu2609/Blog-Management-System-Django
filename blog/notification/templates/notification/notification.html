@@ -14,18 +14,12 @@
         <div class="col-sm-9">
 
           <div class="well text-right">
-           
+            <a href="{% url 'delete' notification.id %}" class="delete" style="align-content: center;">X</a>
           
           <div class="well text-left">
               {% if notification.notification_type == 1 %}
-              <a href="{% url 'post' notification.post_id %}" id = "notification" notification_data ="{{ notification.post_id }}">
-                <img src="../media/{{ notification.sender.profile.avatar }}" class="img-circle" height="55" width="55" alt="Avatar">
-                </a>
-                
-                <a href="{% url 'post' notification.post_id %}" id = "notification" notification_data ="{{ notification.post_id }}"><b>
-                  <h4>Post Like By {{ notification.sender.first_name }}</h4>
-                  </a>
-                
+              <a href="{% url 'post' notification.post_id %}" id = "notification" notification_data ="{{ notification.post_id }}">   <b><h4>            <img src="../media/{{ notification.sender.profile.avatar }}" class="img-circle" height="55" width="55" alt="Avatar">
+                Post Like By {{ notification.sender.first_name }}</h4></b></a>
             {% else %}
            <a href="{% url 'post' notification.post_id %}" id = "notification" notification_data ="{{ notification.post_id }}" ><b><h4><img src="../media/{{ notification.sender.profile.avatar }}" class="img-circle" height="55" width="55" alt="Avatar">
                 {{ notification.sender.first_name }} Comment On Your Post</h4></b></a>
@@ -41,7 +35,7 @@
             <p >Comment :<b>{{ notification.text_preview }}</b></p>
             {% endif %}
             <div>
-              <a href="{% url 'delete' notification.id %}" class="delete" style="align-content: center;">Delete</a>
+            
             </div>
 
               </div>

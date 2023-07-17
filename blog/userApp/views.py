@@ -64,7 +64,7 @@ def index(request):
     
     post_id = Post.objects.filter(author = id , status = True)
     comment = UserPostComment.objects.all()
-    comment_filter = UserPostComment.objects.values('post_id').annotate(total = Count('user_id')).filter(parent_id = None)
+    comment_filter = UserPostComment.objects.values('post_id' ).annotate(total = Count('user_id')).filter(parent_id = None)
     
     context ={
 

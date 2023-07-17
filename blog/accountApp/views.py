@@ -52,7 +52,7 @@ def log_in_view(request):
     #user and admin both use this login view
 
     if request.user.is_authenticated:
-        
+
         if request.user.is_superuser:
             return redirect(user_detail_view)
         

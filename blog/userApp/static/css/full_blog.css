@@ -1,26 +1,27 @@
 .container {
-    position: relative;
-    min-height: 100vh;
-}
-body{
-    background: hsla(206, 70%, 83%, 1);
-    
-    background: linear-gradient(180deg, hsla(206, 70%, 83%, 1) 0%, hsla(229, 89%, 62%, 1) 100%);
-    
-    background: -moz-linear-gradient(180deg, hsla(206, 70%, 83%, 1) 0%, hsla(229, 89%, 62%, 1) 100%);
-    background-attachment: fixed;
+    /* background: hsla(206, 70%, 83%, 1);
 
+    background: linear-gradient(180deg, hsla(206, 70%, 83%, 1) 0%, hsla(229, 89%, 62%, 1) 100%);
+
+    background: -moz-linear-gradient(180deg, hsla(206, 70%, 83%, 1) 0%, hsla(229, 89%, 62%, 1) 100%); */
+    background-image: url(./Frame\ 9.jpg);
+    background-size: cover;
+    min-height: 100vh;
+    position: relative;
+    background-attachment: fixed;
 }
-.post-blog{
+
+.post-blog {
     display: flex;
     border: 2px solid black;
     margin: 16px;
     max-width: 80vw;
     border-radius: 24px;
     box-shadow: 0 5px 20px black;
+    backdrop-filter: blur(3px);
 }
 
-.post-container{
+.post-container {
     /* position: absolute;
     top: 50%;
     left: 50%;
@@ -38,7 +39,7 @@ body{
     /* margin: 10px 20px; */
 }
 
-.divider{
+.divider {
     border-right: 2px solid black;
 }
 
@@ -51,15 +52,13 @@ body{
     height: 100%;
     max-height: 200px;
 }
-
 .img-circle {
     height: 100px;
     width: 100px;
     border-radius: 50%;
     border: 2px solid black;
 }
-
-.title-container {
+.title-container{
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -67,48 +66,39 @@ body{
     position: relative;
     margin: 0px 0px 32px 0px;
 }
-
-.post-title {
+.post-title{
     font-size: 28px;
 }
-
-.user-title {
+.user-title{
     font-size: 28px;
     font-weight: 700;
 }
-
-.part-1-title {
+.part-1-title{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-
-.blog-content {
+.blog-content{
     display: flex;
     flex-direction: column;
     align-items: start;
 }
-
-.views {
+.views{
     font-size: 18px;
 }
-
-.tags {
+.tags{
     margin-bottom: 10px;
 }
-
-.read {
+.read{
     text-decoration: none;
     color: blueviolet;
     font-weight: 600;
 }
-
-.read:hover {
+.read:hover{
     color: rgb(64, 0, 123);
 }
-
-.like-btn {
+.like-btn{
     width: 48px;
     height: 38px;
     font-size: 24px;
@@ -119,9 +109,7 @@ body{
     background-image: linear-gradient(92.88deg, #7d9ef3 9.16%, #418dba 98.72%);
     box-shadow: 0 2px 20px rgb(4, 49, 100);
 }
-
-.comment-btn,
-.comment-sub {
+.comment-btn,.comment-sub{
     width: 100px;
     height: 38px;
     border: none;
@@ -133,46 +121,9 @@ body{
     background-color: rgb(51, 51, 216);
     box-shadow: 0 2px 20px rgb(4, 49, 100);
 }
-
-.comment-btn:active,
-.like-btn:active,
-.comment-sub:active,
-.reply:active,
-.reply_btn:active {
+.comment-btn:active,.like-btn:active,.comment-sub:active{
     box-shadow: 0 0px 0px black;
 }
-
-.like-count {
+.like-count{
     font-size: 22px;
-}
-
-.reply,
-.reply_btn {
-    width: 55px;
-    height: 24px;
-    border: none;
-    color: rgb(230, 230, 230);
-    border: 2px solid black;
-    border-radius: 10px;
-    font-weight: 600;
-    margin: 10px 0px;
-    background-color: rgb(51, 51, 216);
-    box-shadow: 0 2px 20px rgb(4, 49, 100);
-}
-
-.comnt-box {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.comment-tbox {
-    border: none;
-    border: 2px solid black;
-    border-radius: 10px;
-    outline: none;
-}
-
-.comment-tbox:focus {
-    outline: 2px solid rgb(43, 43, 255);
 }
